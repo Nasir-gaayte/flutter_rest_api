@@ -29,14 +29,14 @@ class Products {
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['id'] = id;
-    data['name'] = name;
-    data['image'] = image;
-    data['price'] = price;
-    data['desc'] = desc;
-    data['post_date'] = postDate;
-    data['category'] = category;
+    final Map<String, dynamic> data = <String, dynamic>{};
+    data['id'] = id.toString();
+    data['name'] = name.toString();
+    data['image'] = image.toString();
+    data['price'] = price.toString();
+    data['desc'] = desc.toString();
+    data['post_date'] = postDate.toString();
+    data['category'] = category.toString();
     return data;
   }
 }

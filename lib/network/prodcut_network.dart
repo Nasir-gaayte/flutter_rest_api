@@ -7,9 +7,13 @@ class ProductNetwork implements NetworkApi {
   String dataURl = "https://weme.pythonanywhere.com/";
 
   @override
-  Future<String> deleteProduct(Products products) {
-  
-    throw UnimplementedError();
+  Future<String> deleteProduct(Products products) async {
+    var url = Uri.parse('$dataURl/delete_product/${products.id}');
+    var result = 'false';
+    await http.delete(url).then((value) {
+      return result = 'ture';
+    });
+    return result;
   }
 
   @override
@@ -26,20 +30,25 @@ class ProductNetwork implements NetworkApi {
   }
 
   @override
-  Future<String> patchCompleted(Products products) {
-    // TODO: implement patchCompleted
-    throw UnimplementedError();
+  Future<String> putCompleted(Products products) async {
+    var url = Uri.parse("https://weme.pythonanywhere.com/update_update");
+    String resData = '';
+    await http.put(url, body: {
+      'id': (products.id).toString(),
+    }).then((response) {
+      Map<String, dynamic> result = json.decode(response.body);
+      print('this is the result ${result}');
+      return resData = result['id'];
+    });
+    return resData;
   }
 
   @override
-  Future<String> postProduct(Products products) {
-    // TODO: implement postProduct
-    throw UnimplementedError();
-  }
-
-  @override
-  Future<String> putCompleted(Products products) {
-    // TODO: implement putCompleted
-    throw UnimplementedError();
+  Future<String> postProduct(Products products) async {
+    var url = Uri.parse('$dataURl/create_product/'); 
+    var response = await http.post(url, body: products.toJson());
+    print(response.statusCode);
+    print(response.body);
+    return 'ture';
   }
 }

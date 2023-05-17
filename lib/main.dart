@@ -1,4 +1,4 @@
-import 'package:fetch_data_from_api/pages/index.dart';
+import 'package:fetch_data_from_api/pages/home.dart';
 import 'package:flutter/material.dart';
 import 'package:fetch_data_from_api/theme/colors.dart';
 
@@ -17,7 +17,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primaryColor: primary,
       ),
-      home: const IndexPageState(),
+      home: const HomeScreen(),
     );
   }
 }
